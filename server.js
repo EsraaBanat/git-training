@@ -1,5 +1,4 @@
 const express = require("express");
-const { add, subtract } = require("./operations");
 const { parseOperands } = require("./utils");
 
 const app = express();
@@ -23,7 +22,7 @@ app.get("/multiply", (req, res) => {
 });
 
 app.get("/power", (req, res) => {
-    const {x, y} = req.query;
+    const {x, y} = parseOperands(req);
     const power = x**y;
     res.send(200, power);
 });
